@@ -26,8 +26,12 @@ func SliceIndexInMat(slice []int, mat [][]int) int {
 }
 
 func EuclideanDist(a, b []int) float64 {
-	return math.Sqrt((math.Pow(float64(a[0]), 2.0) - math.Pow(float64(b[0]), 2.0)) + (math.Pow(float64(a[1]), 2.0) - math.Pow(float64(b[1]), 2.0)))
+	return math.Sqrt(math.Pow(float64(a[0])-float64(b[0]), 2.0) + math.Pow(float64(a[1])-float64(b[1]), 2.0))
 }
+
+// func EuclideanDist(a, b []int) float64 {
+// 	return math.Abs(float64(a[0])-float64(b[0])) + math.Abs(float64(a[1])-float64(b[1]))
+// }
 
 func FuncsOnSlice(slice []int, obj_funcs []func([]int) float64) []float64 {
 	output := []float64{}
@@ -39,7 +43,7 @@ func FuncsOnSlice(slice []int, obj_funcs []func([]int) float64) []float64 {
 	return output
 }
 
-func SliceLTE(a, b []float64) bool {
+func SliceLT(a, b []float64) bool {
 	sum := 0
 	for i := 0; i < len(a); i++ {
 		con := b[i] - a[i]
@@ -50,7 +54,7 @@ func SliceLTE(a, b []float64) bool {
 			sum--
 		}
 	}
-	return sum >= 0
+	return sum > 0
 }
 
 func Crossover(item []int) []int {
@@ -81,6 +85,14 @@ func Mutate(item []int) []int {
 	child[rand_index1], child[rand_index2] = child[rand_index2], child[rand_index1]
 
 	return child
+}
+
+func AvgEuclideanDist(slice [][]int) float64 {
+	sum := 0.0
+	for _, item := range slice {
+		sum += EuclideanDist(item, []int{0, 0})
+	}
+	return sum / float64(len(slice))
 }
 
 // func Crossover1(item1, item2 []int) []int, []int {
