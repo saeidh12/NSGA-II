@@ -246,7 +246,7 @@ func Plot(generation int, children [][]int, mapped_mat [][]float64) {
 	plot.SetTitle("Evolution of the Objective functions")
 	// Optional: Setting the title of the plot
 	plot.SetXLabel("Objective Funtion 0")
-	plot.SetYLabel("Objective Funtion 0")
+	plot.SetYLabel("Objective Funtion 1")
 	// Optional: Setting label for X and Y axis
 	// min_x := points[0][MinIndexInSlice(points[0])]
 	// max_x := points[0][MaxIndexInSlice(points[0])]
