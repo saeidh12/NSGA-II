@@ -38,49 +38,49 @@ func FuncsOnSlice(slice []int, obj_funcs []func([]int) float64) []float64 {
 	return output
 }
 
-// func LT(a, b []float64) bool {
-// 	sum := 0
-// 	for i := 0; i < len(a); i++ {
-// 		con := b[i] - a[i]
-// 		switch {
-// 		case con > 0.0:
-// 			sum++
-// 		case con < 0.0:
-// 			sum--
-// 		}
-// 	}
-// 	return sum > 0
-// }
-//
-// func LTe(a, b []float64) bool {
-// 	sum := 0
-// 	for i := 0; i < len(a); i++ {
-// 		con := b[i] - a[i]
-// 		switch {
-// 		case con > 0.0:
-// 			sum++
-// 		case con < 0.0:
-// 			sum--
-// 		}
-// 	}
-// 	return sum >= 0
-// }
+func LT(a, b []float64) bool {
+	sum := 0
+	for i := 0; i < len(a); i++ {
+		con := b[i] - a[i]
+		switch {
+		case con > 0.0:
+			sum++
+		case con < 0.0:
+			sum--
+		}
+	}
+	return sum > 0
+}
 
-// func LTAbs(a, b []float64) bool {
-// 	sum := 0.0
-// 	for i := 0; i < len(a); i++ {
-// 		sum += b[i] - a[i]
-// 	}
-// 	return sum > 0
-// }
-//
-// func LTeAbs(a, b []float64) bool {
-// 	sum := 0.0
-// 	for i := 0; i < len(a); i++ {
-// 		sum += b[i] - a[i]
-// 	}
-// 	return sum >= 0
-// }
+func LTe(a, b []float64) bool {
+	sum := 0
+	for i := 0; i < len(a); i++ {
+		con := b[i] - a[i]
+		switch {
+		case con > 0.0:
+			sum++
+		case con < 0.0:
+			sum--
+		}
+	}
+	return sum >= 0
+}
+
+func LTAbs(a, b []float64) bool {
+	sum := 0.0
+	for i := 0; i < len(a); i++ {
+		sum += b[i] - a[i]
+	}
+	return sum > 0
+}
+
+func LTeAbs(a, b []float64) bool {
+	sum := 0.0
+	for i := 0; i < len(a); i++ {
+		sum += b[i] - a[i]
+	}
+	return sum >= 0
+}
 
 func EuclideanLT(a, b []float64) bool {
 	return EuclideanDistFloat(a, []float64{0, 0}) < EuclideanDistFloat(b, []float64{0, 0})
