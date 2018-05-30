@@ -73,9 +73,11 @@ func (p *Problem) Init(
 	}
 }
 
-func (p Problem) stopCondition(generation int, children [][]int) bool {
-	fmt.Println("gen: ", generation, "  avg vec len: ", AvgEuclideanDist(children), "  answer vec len: ", EuclideanDist(children[0], []int{0, 0}))
-	// fmt.Println(children, "  answer vec: ", children[0])
+func (p Problem) stopCondition(generation int, children [][]int, mapped_mat [][]float64) bool {
+	fmt.Println("gen: ", generation, " number of stations: ", mapped_mat[0][0]/100, "  avg vec len: ", AvgEuclideanDist(mapped_mat), "  answer vec len: ", EuclideanDistFloat(mapped_mat[0], []float64{0, 0}))
+
+	Plot(generation, children, mapped_mat)
+
 	if generation == p.number_of_repetition {
 		return true
 	} else {
@@ -99,13 +101,12 @@ func (p Problem) ObjectFunction1(slice []int) float64 {
 	if !changed_station {
 		number_of_active_stations++
 	}
-	return float64(number_of_active_stations)
+	return float64(number_of_active_stations * 100)
 }
 
 func (p Problem) ObjectFunction2(slice []int) float64 {
 	neibors := 0
 	sum := 0.0
-	// fmt.Println(p.list_of_points)
 	for index, item := range slice {
 		if item < p.number_of_neihborhoods {
 			neibors++
